@@ -14,6 +14,7 @@ def scrape_all():
     browser = Browser('chrome', **executable_path, headless=True)
 
     news_title, news_paragraph = mars_news(browser)
+    hemisphere_image_urls = hemisphere(browser)
 
     # Run all scraping functions and store results in a dictionary
     data = {
@@ -22,6 +23,7 @@ def scrape_all():
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
+        "hemispheres": hemisphere_image_urls,
         "last_modified": dt.datetime.now()
     }
     
@@ -112,6 +114,31 @@ def mars_facts():
 
 
 
+def hemisphere(browser):
+    
+    url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+    browser.visit(url)
+    
+    hemisphere_image_urls = []
+    
+    image = browser.find_by_css("a.product-item h3")
+    
+    for i in range(len(image)):
+        
+        
+        hemispheres = {}
+        browser.find_by_css("a.product-item h3")[i].click()                                     
+        element = browser.find_by_text("Sample").first
+        img_url= element["href"]
+        title = browser.find_by_css("h2.title").text
+        hemispheres["img_url"] = img_url
+        hemispheres["title"] = title
+        hemisphere_image_urls.append(hemispheres)
+        browser.back()
+     
+    return hemisphere_image_urls
+
+         
 
 if __name__ == "__main__":
 
