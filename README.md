@@ -10,11 +10,14 @@ HTML Web scraping on Mars data to create Flask web application using Python and 
 
 Purpose of the initial analysis is to automate the web browser to visit different websites to extract data for Mission to Mars and store the analyzed data in MongoDB database and finally render the data in a web application created using Flask.
 
-Web pages used to perform web scraping to gather different data related to Mars news.
+• Web pages used to perform web scraping to gather different data related to Mars news.
 
 [https://redplanetscience.com](https://redplanetscience.com)
+
 [https://spaceimages-mars.com](https://spaceimages-mars.com)
+
 [https://galaxyfacts-mars.com](https://galaxyfacts-mars.com)
+
 
 The scraping method captured Mars article data which included title and summary of the recent articles, images including the links and full size images, and collection of Mars facts.
 
@@ -26,7 +29,7 @@ The scraping method captured Mars article data which included title and summary 
 
 Purpose of the updated analysis is to adjust the current web app  created during initial analysis to include all four of the hemisphere images. To do this, I used BeautifulSoup and Splinter to scrape full-resolution images of Mars’s hemispheres and the titles of those images, store the scraped data on a Mongo database, use a web application to display the data, and alter the design of the web app to accommodate these images.
 
-Web pages used to perform web scraping to gather images and titles to Mars Hemispheres.
+• Web pages used to perform web scraping to gather images and titles to Mars Hemispheres.
 
 [https://marshemispheres.com/](https://marshemispheres.com/)
 
@@ -38,7 +41,7 @@ The scraping method captured 4 Mars Hemisphere images, urls, and the title.
 
 [scraping.py](scraping.py)   - Scraping file for Mission to Mars 
 
-[index.html](index.html)   - Html file for Mission to Mars 
+[index.html](templates/index.html)   - Html file for Mission to Mars 
 
 [app.py](app.py) - App file to create a web applciaiton for Mission to Mars 
 
@@ -52,4 +55,7 @@ Web application created with Flask that included images,a table with Mars inform
 Viewing form Mobile device 
 
 ![main](resources/mobileview_Mars.png)
-![main](resources/mobileview2_Mars.png)
+
+The Database will be updated each time the new data is scraped,it will be saed with a "last modified" date. 
+
+![main](resources/mars_mongodb.png)
